@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.flex-col{
+    display: flex;
+    flex-direction: column;
+}
+.flex-row{
+    display: flex;
+}
+.signin-con{
+    background: url('https://qsf.fs.quoracdn.net/-4-ans_frontend_assets.images.home_page_bg_desktop.png-26-4770753d59b970e1.png');
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+.logo-head{
+    font-family: clarendon-text-pro, serif;
+    color: rgb(185, 43, 39);
+    font-size: 70px;
+    margin-top: 30px;
+}
+.heading{
+    text-align: center;
+}
+.form-con{
+    background-color: white;
+    border-radius: 3px;
+    height: 535px;
+    width: 585px;
+}
+.logo-para{
+    font-weight: bold;
+}
+.signup-opt{
+    border: 1px solid #dee0e1;
+    height: 3em;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 3px;
+}
+.signup-opt-con{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin-top: 20px;
+}
+.first-opt{
+    padding: 15px;
+    gap: 20px;
+}
+.second-opt{
+    padding: 15px;
+    gap: 20px;
+}
+.s-w-e{
+    text-align: center;
+    cursor: pointer;
+}
+.forg{
+    justify-content: space-between;
+    align-items: center;
+}
+.enter-cred{
+    border: 1px solid #dee0e1;
+    height: 3em;
+    padding-left: 15px;
+    border-radius: 3px;
+}
+.enter-cred:hover{
+    border: 1px solid rgb(25, 95, 170);
+    height: 3em;
+    padding-left: 15px;
+}
+.enter-cred:focus{
+    outline:rgb(25, 95, 170) ;
+}
+button{
+    cursor: pointer;
+}
+span{
+    cursor: pointer;
+}
+.foot{
+    border: 1px solid #dee0e1;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f1f2f2;
+    color: #636466;
+}
+.login-btn{
+    height: 38px;
+    min-width: 70px;
+    border-radius: 50px;
+    background-color: #2e69ff;
+    color: white;
+    border: none;
+}
+.p-13{
+    font-size: 13px;
+}
+input{
+    border-radius: 3px;
+}
