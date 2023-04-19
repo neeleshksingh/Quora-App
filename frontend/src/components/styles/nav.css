@@ -1,8 +1,16 @@
-nav{
+#nav1{
     border: 1px solid #dee0e1;
     justify-content: space-around;
     align-items: center;
     height: 4em;
+}
+#nav2{
+    border: 1px solid #dee0e1;
+    /* justify-content: space-around; */
+    justify-content: center;
+    align-items: center;
+    height: 4em;
+    gap: 40px;
 }
 .logo-head-nav{
     font-family: clarendon-text-pro, serif;
@@ -10,4 +18,14 @@ nav{
 }
 .sections{
     gap: 15px;
+}
+.nav-icons{
+    gap: 20px;
+}
+.logout{
+   border-radius: 50px; 
+   height: 50px;
+   width: 50px;
+   border: none;
+   padding: 10px;
 }

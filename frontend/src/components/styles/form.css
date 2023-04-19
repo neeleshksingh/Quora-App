@@ -1,0 +1,22 @@
+#post-form{
+    border: 1px solid #dee0e1;
+    height: 500px;
+    width: 50%;
+}
+.form-con{
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+#say{
+    width: 100%;
+    height: 452px;
+    padding: 20px;
+    border: 1px solid #dee0e1;
+}
+.add-footer{
+    justify-content: space-between;
+    align-items: center;
+    padding:0 20px 0 20px;
+}

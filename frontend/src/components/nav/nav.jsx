@@ -4,7 +4,7 @@ import '../styles/nav.css'
 function Navigation() {
   return (
     <div>
-      <nav className="flex-row">
+      <nav className="flex-row" id="nav1">
         <h1 className="logo-head-nav" style={{fontSize:'33px'}}>Quora</h1>
         <div className="flex-row sections">
             <h5>About</h5>

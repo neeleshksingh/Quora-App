@@ -1,0 +1,37 @@
+#user{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: red;
+}
+
+.post-something{
+    border: 1px solid #dee0e1;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 15px;
+    gap: 10px;
+    margin-top: 2em;
+}
+.user-ser{
+    gap: 10px;
+}
+#ask-share{
+    height: 50px;
+    width: 100%;
+    border-radius: 50px;
+    border: 1px solid #dee0e1;
+    padding-left: 15px;
+    background-color: #ccced0;
+}
+#ask-share:focus{
+    outline: none;
+}
+.querry-btn{
+    justify-content: space-around;
+}
+.querry{
+    align-items: center;
+    cursor: pointer;
+}

@@ -19,6 +19,7 @@ const Signin = () => {
     if(token){
       try {
         const getUserDetails = JSON.parse(token)
+        console.log(getUserDetails);
         nav('/main')
       } catch(error) {
         console.error(error);
