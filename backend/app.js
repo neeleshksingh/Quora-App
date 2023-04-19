@@ -2,9 +2,11 @@ const express = require('express')
 const connection = require('./connection/connection')
 connection()
 const User = require('./routes/auth')
+const cors = require('cors')
 
 const app = express()
 
+app.use(cors())
 app.use('/auth', User)
 
 app.get('*', (req, res) => {

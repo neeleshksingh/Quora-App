@@ -1,0 +1,13 @@
+nav{
+    border: 1px solid #dee0e1;
+    justify-content: space-around;
+    align-items: center;
+    height: 4em;
+}
+.logo-head-nav{
+    font-family: clarendon-text-pro, serif;
+    color: rgb(185, 43, 39);
+}
+.sections{
+    gap: 15px;
+}

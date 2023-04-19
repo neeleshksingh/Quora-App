@@ -3,6 +3,7 @@ const User = require('../models/user')
 const router = express.Router()
 const bcrypt = require('bcrypt')
 const { jwt_token } = require('../key')
+const jwt = require('jsonwebtoken')
 
 router.use(express.json())
 router.use(express.urlencoded({ extended: true }))
@@ -12,8 +13,8 @@ router.use(express.urlencoded({ extended: true }))
 router.post('/reg', async (req, res) => {
     console.log(req.body);
     try {
-        const { email, password } = req.body
-        if (!email && !password) {
+        const { email, password, username } = req.body
+        if (!email && !password && !username) {
             return res.status(400).json({
                 status: "failed",
                 message: "fill all the details"
@@ -21,7 +22,8 @@ router.post('/reg', async (req, res) => {
         }
         else {
             const exist = await User.findOne({ email: email })
-            if (exist) {
+            const existUsername = await User.findOne({ username: username })
+            if (exist || existUsername) {
                 return res.status(400).json({
                     status: 'failed',
                     message: 'user already registered'
@@ -34,7 +36,7 @@ router.post('/reg', async (req, res) => {
                     })
                 }
                 const data = await User.create({
-                    email, password: hasshedPass
+                    email, password: hasshedPass, username
                 })
                 return res.status(200).json({
                     status: 'success',
@@ -70,10 +72,12 @@ router.post('/log', async (req, res) => {
                         })
                     }
                     if (result) {
+                        const token = jwt.sign({ _id: exist.is }, jwt_token)
                         const { _id, email, password } = exist
                         return res.status(200).json({
                             status: 'success',
                             message: 'User loggedin Successfully',
+                            token: token,
                             user: { _id, email, password }
                         })
                     }
@@ -99,16 +103,16 @@ router.post('/log', async (req, res) => {
 })
 
 //DELETE API FOR DELETING USER
-router.delete('/:id', async(req,res)=>{
-    try{
-        const data = await User.deleteOne({_id:req.params.id})
-        if(data){
+router.delete('/:id', async (req, res) => {
+    try {
+        const data = await User.deleteOne({ _id: req.params.id })
+        if (data) {
             return res.status(200).json({
-                status : 'success',
-                message : 'User deleted successfully'
+                status: 'success',
+                message: 'User deleted successfully'
             })
         }
-    } catch(e){
+    } catch (e) {
         return res.status(400).json({
             error: e.message
         })
@@ -116,15 +120,15 @@ router.delete('/:id', async(req,res)=>{
 })
 
 //GET API FOR USERS
-router.get('/', async(req,res)=>{
+router.get('/', async (req, res) => {
     console.log(req.body);
-    try{
+    try {
         const data = await User.find()
         return res.status(200).json({
-            status : 'success',
+            status: 'success',
             data
         })
-    } catch(e){
+    } catch (e) {
         return res.status(400).json({
             error: e.message
         })
