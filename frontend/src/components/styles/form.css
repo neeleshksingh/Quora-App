@@ -3,7 +3,7 @@
     height: 500px;
     width: 50%;
 }
-.form-con{
+.form-container{
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -14,6 +14,9 @@
     height: 452px;
     padding: 20px;
     border: 1px solid #dee0e1;
+}
+#say:focus{
+    outline: none;
 }
 .add-footer{
     justify-content: space-between;
