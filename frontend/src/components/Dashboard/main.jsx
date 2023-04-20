@@ -28,7 +28,7 @@ function Main() {
   }, []);
 
   return (
-    <div className="main-container">
+    <div className="main-container flex-col">
       <div className="post-something flex-col">
         <div className="flex-row user-ser">
           <div id="user"></div>

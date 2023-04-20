@@ -3,6 +3,7 @@ const connection = require('./connection/connection')
 connection()
 const User = require('./routes/auth')
 const Post = require('./routes/addpost')
+const Ask = require('./routes/ask')
 const cors = require('cors')
 
 const app = express()
@@ -10,6 +11,7 @@ const app = express()
 app.use(cors())
 app.use('/auth', User)
 app.use('/post', Post)
+app.use('/ask', Ask)
 
 app.get('*', (req, res) => {
     res.status(500).send('Api not found')

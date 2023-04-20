@@ -91,7 +91,7 @@ const Signin = () => {
             />
             <label htmlFor="password">Password</label>
             <input
-              type="text"
+              type="password"
               className="enter-cred"
               id="password"
               placeholder="Your Password"

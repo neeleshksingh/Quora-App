@@ -98,7 +98,7 @@ function Post() {
           onChange={(e) => setData({ ...data, content: e.target.value })}
         ></textarea>
         <div className="add-footer flex-row">
-          <AddToPhotosIcon onClick={addImg} />
+          <AddToPhotosIcon onClick={addImg} className="image-btn" />
           <button className="login-btn" onClick={handleSubmit}>
             Post
           </button>
