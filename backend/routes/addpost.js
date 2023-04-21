@@ -32,19 +32,27 @@ router.post('/', async (req, res) => {
 
 router.get('/allpost', async (req, res) => {
     try {
-        const data = await Post.find()
-        if (data) {
-            return res.status(200).json({
-                status: 'success',
-                data
-            })
-        }
-    } catch (e) {
-        return res.status(400).json({
-            error: e.message
-        })
+      const data = await Post.find();
+  
+      if (data && data.length > 0) {
+        return res.status(200).json({
+          status: 'success',
+          data,
+        });
+      } else {
+        return res.status(404).json({
+          status: 'error',
+          message: 'No posts found',
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({
+        status: 'error',
+        message: 'An error occurred while fetching posts',
+      });
     }
-})
+  });  
 
 router.put('/:id', async (req, res) => {
     try {

@@ -7,12 +7,13 @@ import axios from "axios";
 function Post() {
   const [data, setData] = useState({
     content: "",
-    img: null
+    img: null,
   });
   const [image, setImage] = useState("");
   const [imgurl, setImgurl] = useState("");
   const nav = useNavigate();
   const [error, setError] = useState({});
+  const [truncateContent, setTruncateContent] = useState(true);
 
   useEffect(() => {
     if (imgurl) {
@@ -22,12 +23,12 @@ function Post() {
           "http://localhost:3000/post/",
           {
             img: imgurl,
-            content: data.content
+            content: data.content,
           },
           {
             headers: {
-              "Content-Type": "application/json"
-            }
+              "Content-Type": "application/json",
+            },
           }
         )
         .then((response) => {
@@ -54,6 +55,10 @@ function Post() {
       .post("https://api.cloudinary.com/v1_1/neeleshks/image/upload", data)
       .then((response) => setImgurl(response.data.secure_url))
       .catch((error) => console.log(error));
+  };
+
+  const toggleContent = () => {
+    setTruncateContent(!truncateContent);
   };
 
   const addImg = () => {
@@ -95,6 +100,7 @@ function Post() {
           cols="30"
           rows="10"
           placeholder="Say Something..."
+          value={data.content}
           onChange={(e) => setData({ ...data, content: e.target.value })}
         ></textarea>
         <div className="add-footer flex-row">
@@ -105,7 +111,7 @@ function Post() {
         </div>
       </form>
       <div>
-      {error.message && <p className="error-message">{error.message}</p>}
+        {error.message && <p className="error-message">{error.message}</p>}
       </div>
     </div>
   );
