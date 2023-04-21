@@ -7,8 +7,8 @@ router.use(express.urlencoded({ extended: true }))
 
 router.post('/', async (req, res) => {
     try {
-        const { content, img, user } = req.body
-        if (!content || !img) {
+        const { content, img, user, heading } = req.body
+        if (!content || !img || !heading) {
             res.status(400).json({
                 status: 'failed',
                 message: "Enter all fields"
@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
         }
         else {
             const data = await Post.create({
-                content, img, user
+                content, img, user, heading
             })
             return res.status(200).json({
                 status: 'Success',

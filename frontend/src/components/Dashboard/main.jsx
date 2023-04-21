@@ -94,6 +94,7 @@ function Main() {
             return (
               <div className="box" key={index}>
                 <section className="feeds flex-col">
+                  <h1>{data.heading}</h1>
                   <p className={selected === index ? "" : "truncate"}>
                     {data.content}
                   </p>
@@ -103,7 +104,7 @@ function Main() {
                         onClick={() => toggleContent(index)}
                         className="read-more"
                       >
-                        {selected === index ? "Read Less" : "Read More"}
+                        {selected === index ? "(Read Less)" : "(Read More)"}
                       </button>
                     </span>
                   )}

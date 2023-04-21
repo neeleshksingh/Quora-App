@@ -8,6 +8,7 @@ function Post() {
   const [data, setData] = useState({
     content: "",
     img: null,
+    heading : ""
   });
   const [image, setImage] = useState("");
   const [imgurl, setImgurl] = useState("");
@@ -24,6 +25,7 @@ function Post() {
           {
             img: imgurl,
             content: data.content,
+            heading : data.heading
           },
           {
             headers: {
@@ -94,6 +96,9 @@ function Post() {
   return (
     <div className="flex-col form-container">
       <form action="" id="post-form">
+        <input type="text" placeholder="Heading" className="heading" value={data.heading}
+        onChange={(e) => setData({ ...data, heading: e.target.value })}
+        />
         <textarea
           name="say-something"
           id="say"
