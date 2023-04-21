@@ -14,7 +14,6 @@ function Post() {
   const [imgurl, setImgurl] = useState("");
   const nav = useNavigate();
   const [error, setError] = useState({});
-  const [truncateContent, setTruncateContent] = useState(true);
 
   useEffect(() => {
     if (imgurl) {
@@ -57,10 +56,6 @@ function Post() {
       .post("https://api.cloudinary.com/v1_1/neeleshks/image/upload", data)
       .then((response) => setImgurl(response.data.secure_url))
       .catch((error) => console.log(error));
-  };
-
-  const toggleContent = () => {
-    setTruncateContent(!truncateContent);
   };
 
   const addImg = () => {
