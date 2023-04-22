@@ -6,6 +6,7 @@ import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import ShareIcon from "@mui/icons-material/Share";
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 import "../styles/dashboard.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -18,6 +19,7 @@ function Main() {
     parseInt(localStorage.getItem("count")) || 0
   );
   const [color, setColor] = useState("black");
+  const [isOpen, setIsOpen] = useState(new Array(arr.length).fill(false));
 
   useEffect(() => {
     axios
@@ -33,6 +35,13 @@ function Main() {
 
   const handlePost = () => {
     nav("/post");
+  };
+  const handleToggle = (index) => {
+    setIsOpen((prevIsOpen) => {
+      const newIsOpen = [...prevIsOpen];
+      newIsOpen[index] = !newIsOpen[index];
+      return newIsOpen;
+    });
   };
 
   const toggleContent = (index) => {
@@ -62,6 +71,22 @@ function Main() {
     setCount((prevCount) => prevCount - 1);
     setColor("red");
   };
+
+  const handleDelete = (id) => {
+    axios
+      .delete(`http://localhost:3000/post/${id}`)
+      .then((response) => {
+        console.log(response);
+        setArr((prevArr) => {
+          return prevArr.filter((item) => item._id !== id);
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  
+  
   return (
     <div className="main-container flex-col">
       <div className="post-something flex-col">
@@ -94,7 +119,24 @@ function Main() {
             return (
               <div className="box" key={index}>
                 <section className="feeds flex-col">
-                  <h1>{data.heading}</h1>
+                  <div className="flex-row upper-portion">
+                    <h1>{data.heading}</h1>
+                    <div className="dropdown">
+                      <MoreVertIcon className="dropdown-toggle cursor-pointer"
+                        onClick={() => handleToggle(index)}/>
+                      {isOpen[index] && (
+                        <ul className="dropdown-menu flex-col">
+                          <li className="cursor-pointer" onClick={() => handleDelete(data._id)}>
+                            Delete
+                          </li>
+                          <li className="cursor-pointer">
+                            Edit
+                          </li>
+                        </ul>
+                      )}
+                    </div>
+                  </div>
+
                   <p className={selected === index ? "" : "truncate"}>
                     {data.content}
                   </p>

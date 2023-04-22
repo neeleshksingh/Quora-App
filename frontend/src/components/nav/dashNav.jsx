@@ -5,8 +5,7 @@ import CreateIcon from "@mui/icons-material/Create";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import LogoutButton from "../Authorization/logout";
-import '../styles/nav.css'
-
+import "../styles/nav.css";
 
 function DashNav() {
   return (
@@ -16,17 +15,21 @@ function DashNav() {
           Quora
         </h1>
         <div className="flex-row nav-icons">
-            <HomeIcon />
-            <ListAltIcon />
-            <CreateIcon />
-            <PeopleOutlineIcon />
-            <NotificationsIcon />
+          <HomeIcon className="cursor-pointer" />
+          <ListAltIcon className="cursor-pointer" />
+          <CreateIcon className="cursor-pointer"/>
+          <PeopleOutlineIcon className="cursor-pointer"/>
+          <NotificationsIcon className="cursor-pointer"/>
         </div>
         <div>
-            <input className="enter-cred" type="text" placeholder=" &#128269; Search Quora"/>
+          <input
+            className="enter-cred"
+            type="text"
+            placeholder=" &#128269; Search Quora"
+          />
         </div>
         <div>
-            <LogoutButton/>
+          <LogoutButton />
         </div>
       </nav>
     </div>

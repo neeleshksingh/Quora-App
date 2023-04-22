@@ -91,7 +91,7 @@ function Post() {
   return (
     <div className="flex-col form-container">
       <form action="" id="post-form">
-        <input type="text" placeholder="Heading" className="heading" value={data.heading}
+        <input type="text" placeholder="Heading" className="post-heading" value={data.heading}
         onChange={(e) => setData({ ...data, heading: e.target.value })}
         />
         <textarea

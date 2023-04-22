@@ -93,3 +93,13 @@
     background-color: white;
     color: blue;
 }
+.upper-portion{
+    justify-content: space-between;
+    align-items: center;
+}
+.dropdown-menu{
+    gap: 5px;
+}
+ul{
+    list-style: none;
+}
