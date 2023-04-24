@@ -14,10 +14,11 @@ function Post() {
   const [imgurl, setImgurl] = useState("");
   const nav = useNavigate();
   const [error, setError] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (imgurl) {
-      console.log("imgurl", imgurl);
+    if (imgurl && isLoading) {
+      setIsLoading(true);
       axios
         .post(
           "http://localhost:3000/post/",
@@ -42,9 +43,11 @@ function Post() {
         })
         .catch((error) => {
           console.log(error);
-        });
+        })
+        .finally(() => setIsLoading(false));
     }
-  }, [imgurl]);
+  }, [imgurl, isLoading]);
+
 
   const ImageUpload = (event) => {
     event.preventDefault();
@@ -82,6 +85,7 @@ function Post() {
         ImageUpload(e);
         return;
       }
+      setIsLoading(true);
       ImageUpload(e);
     } catch (e) {
       console.log(e);
@@ -106,7 +110,7 @@ function Post() {
         <div className="add-footer flex-row">
           <AddToPhotosIcon onClick={addImg} className="image-btn" />
           <button className="login-btn" onClick={handleSubmit}>
-            Post
+            {isLoading ? "Loading..." : "Post"}
           </button>
         </div>
       </form>
