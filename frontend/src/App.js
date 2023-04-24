@@ -8,6 +8,7 @@ import DashNav from "./components/nav/dashNav";
 import Post from "./components/Forms/post";
 import Ask from "./components/Forms/ask";
 import Answer from "./components/Forms/answer";
+import Users from "./components/Dashboard/allUsers";
 
 
 function App() {
@@ -19,9 +20,10 @@ function App() {
           <Route path="/signup" element={<Signup/>} />
           <Route path="/terms" element={<><Navigation/><Terms/></>} />
           <Route path="/main" element={<><DashNav/><Main/></>} />
-          <Route path="/post" element={<Post/>} />
+          <Route path="/post" element={<><DashNav/><Post/></>} />
           <Route path="/ask" element={<Ask/>} />
           <Route path="/answer" element={<Answer/>} />
+          <Route path="/users" element={<><DashNav/><Users/></>} />
         </Routes>
       </BrowserRouter>
     </div>
